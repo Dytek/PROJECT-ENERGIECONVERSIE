@@ -56,6 +56,25 @@ plt.savefig(r'C:\Users\dylan\Documents\VUB\Heat duration year.pdf', format='pdf'
 plt.show()
 
 plt.figure(figsize=(8, 6))
+plt.plot(df.index, profile, label='Heat Demand Profile ', linewidth=0.5)
+plt.xlim(pd.Timestamp(2021,11,25,0), pd.Timestamp(2021,12,17,0))
+date_format = mdates.DateFormatter('%m-%d')
+plt.grid(True)
+plt.gca().xaxis.set_major_formatter(date_format)
+locator = mdates.DayLocator(interval=2)
+plt.gca().xaxis.set_major_locator(locator)
+
+tick_labels = [item.get_text() for item in plt.gca().get_xticklabels()]
+
+plt.xlabel('Date')
+plt.ylabel('Heat Demand  [kW]')
+plt.title('Heat Demand Profile of a multi-family house in Brussels 25/11/21 - 17/12/21')
+
+plt.savefig(r'C:\Users\dylan\Documents\VUB\Heat duration december.pdf', format='pdf')
+plt.show()
+
+
+plt.figure(figsize=(8, 6))
 plt.plot(df.index, profile, label='Heat Demand Profile ', linewidth=0.8)
 plt.xlim(pd.Timestamp(2021,3,1,0), pd.Timestamp(2021,3,20,0))
 
